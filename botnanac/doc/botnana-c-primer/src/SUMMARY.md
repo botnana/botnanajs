@@ -5,3 +5,4 @@
 - [簡介](./README.md)
 - [多工](./tasks.md)
 - [上位控制器](./host.md)
+- [馬達控制](./motor_control.md)

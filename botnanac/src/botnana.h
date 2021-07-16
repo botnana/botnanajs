@@ -581,6 +581,7 @@ struct Program;
 
 // new program
 struct Program * program_new (const char * name);
+struct Program * program_new_with_file(const char *name, const char *path);
 
 // push real time script to program
 void program_line(struct Program * pm, const char * cmd);

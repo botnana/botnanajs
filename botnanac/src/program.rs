@@ -10,6 +10,19 @@ pub extern "C" fn program_new(name: *const c_char) -> Box<Program> {
     Box::new(Program::new(name))
 }
 
+#[no_mangle]
+pub extern "C" fn program_new_with_file(name: *const c_char, path: *const c_char) -> Box<Program> {
+    let name = unsafe {
+        assert!(!name.is_null());
+        str::from_utf8(CStr::from_ptr(name).to_bytes()).unwrap()
+    };
+    let path = unsafe {
+        assert!(!path.is_null());
+        str::from_utf8(CStr::from_ptr(path).to_bytes()).unwrap()
+    };
+    Box::new(Program::new_with_file(name, path))
+}
+
 /// deploy porgram
 #[no_mangle]
 pub extern "C" fn program_deploy(botnana: Box<Botnana>, program: Box<Program>) {
